@@ -29,7 +29,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="{{ url('/home') }}">Green Healthy</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                <a class="navbar-brand js-scroll-trigger" href="{{ url('/home') }}">InfoCovid-19</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
                
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
@@ -45,7 +45,6 @@
                         @else
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('korona') }}">Data Covid</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('/berita') }}">Berita</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ url('toko') }}">Toko</a></li>
                         <li class="nav-item">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -65,19 +64,6 @@
                                     </form>
                                 </div>
                           </li>
-                        <li class="nav-item">
-                            <?php
-                                $pesanan_utama = \App\Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
-                                if(!empty($pesanan_utama))
-                                    {
-                                     $notif = \App\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count(); 
-                                    }
-                            ?>
-                            <a class="nav-link js-scroll-trigger" href="{{ url('checkout') }}"><i class="fa fa-shopping-cart">
-                            </i>@if(!empty($notif))<span class="badge badge-danger">{{ $notif }}</span>
-                                @endif
-                            </a>
-                        </li>
                         @endguest
                     </ul>
                 </div>

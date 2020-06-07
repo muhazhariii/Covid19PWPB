@@ -23,11 +23,6 @@ Route::get('/korona', 'HomeController@korona');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('pesan/{id}', 'PesanController@index');
-Route::post('pesan/{id}', 'PesanController@pesan');
-Route::get('checkout', 'PesanController@checkout');
-Route::get('checkout/{id}','PesanController@delete');
-Route::get('konfirmasi-checkout', 'PesanController@konfirmasi');
 
 Route::get('berita/{id}', 'AdminController@detail');
 Route::get('/berita', 'HomeController@indexberita');

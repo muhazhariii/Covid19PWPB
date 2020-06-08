@@ -27,9 +27,9 @@
     <body id="page-top">
 
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="{{ url('/home') }}">InfoCovid-19</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+                <a class="navbar-brand js-scroll-trigger" href="{{ url('/home') }}">infocovid</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
                
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
@@ -53,7 +53,9 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ url('history') }}">Riwayat Pemesanan</a>
+                                    @if(Auth::user()->status == 'admin')
                                     <a class="dropdown-item" href="{{ url('admin') }}">Halaman Admin</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -64,6 +66,19 @@
                                     </form>
                                 </div>
                           </li>
+                        <li class="nav-item">
+                            <?php
+                                $pesanan_utama = \App\Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+                                if(!empty($pesanan_utama))
+                                    {
+                                     $notif = \App\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count(); 
+                                    }
+                            ?>
+                            <a class="nav-link js-scroll-trigger" href="{{ url('checkout') }}"><i class="fa fa-shopping-cart">
+                            </i>@if(!empty($notif))<span class="badge badge-danger">{{ $notif }}</span>
+                                @endif
+                            </a>
+                        </li>
                         @endguest
                     </ul>
                 </div>

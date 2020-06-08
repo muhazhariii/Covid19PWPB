@@ -24,40 +24,52 @@
       <div class="masthead-heading text-uppercase">Di Indonesia</div>
     </div>
   </header>
-  <br><br><br><br>
+  <br><br>
   		<div class="container">
+        @foreach ($suspects2 as $sus)
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="bg-info box text-white">
               <div class="row">
                 <div class="col-md-6">
                   <h5>Positif</h5>
-                  <h3>00000</h3>
+                  <h3>{{ $sus['positif'] }}</h3>
                 </div>
               </div>
             </div>
           </div>
-           <div class="col-md-4">
+          <div class="col-md-6">
+            <div class="bg-warning box text-white">
+              <div class="row">
+                <div class="col-md-6">
+                  <h5>Dirawat</h5>
+                  <h3>{{ $sus['dirawat'] }}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+           <div class="col-md-6">
             <div class="bg-success box text-white">
               <div class="row">
                 <div class="col-md-6">
                   <h5>Sembuh</h5>
-                  <h3>00000</h3>
+                  <h3>{{ $sus['sembuh'] }}</h3>
                 </div>
               </div>
             </div>
           </div>
-           <div class="col-md-4">
+           <div class="col-md-6">
             <div class="bg-danger box text-white">
               <div class="row">
                 <div class="col-md-6">
                   <h5>Meninggal</h5>
-                  <h3>00000</h3>
+                  <h3>{{ $sus['meninggal'] }}</h3>
                 </div>
               </div>
             </div>
           </div>
         </div><br>
+        @endforeach
         <div class="p-3 mb-2 bg-dark text-white">Data Covid-19 di Indonesia</div>
     		<table class="table">
           <thead class="thead-light">

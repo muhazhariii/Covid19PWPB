@@ -11,6 +11,8 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('berita') }}">Berita</a></li>
+                <li class="breadcrumb-item"><a href="#">Viral</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $berita->judul }}</li>
               </ol>
             </nav>
@@ -27,8 +29,6 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td>Deskripsi</td>
-                                        <td>:</td>
                                         <td>{{ $berita->deskripsi }}</td>
                                     </tr>        
                                 </tbody>

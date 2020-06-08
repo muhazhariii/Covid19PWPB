@@ -94,9 +94,7 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Gambar</th>
           <th scope="col">Judul Berita</th>
-          <th scope="col">Deskripsi</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
@@ -105,9 +103,7 @@
           @foreach ($berita as $news)
         <tr>
           <th scope="row">{{ $no++ }}</th>
-          <td><img src="{{ 'Uploads' }}/{{$news->foto}}" width="50" height="50"></td>
           <td>{{ $news->judul }}</td>
-          <td>{{ $news->deskripsi }}</td>
           <td>
             <a class="btn btn-primary btn-sm" href="/admin/berita/{{$news->id}}/edit"><i class="fa fa-edit"></i></a>
             <a class="btn btn-danger btn-sm" href="/admin/berita/{{$news->id}}" onclick="return confirm('Anda yakin akan menghapus data ?');" ><i class="fa fa-trash"></i></a> 
@@ -129,7 +125,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="/admin/berita/create" method="post" enctype="multipart/form-data">
+            <form action="/admin/berita/tambah" method="post" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                 <label for="foto">Upload Gambar</label>

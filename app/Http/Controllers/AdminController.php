@@ -15,6 +15,7 @@ class AdminController extends Controller
     public function index(){
     	$data['barangs'] = DB::table('barangs')->get();
         $data2['berita'] = DB::table('berita')->get();
+        
     	return view('admin.index', $data, $data2 );
     }
 

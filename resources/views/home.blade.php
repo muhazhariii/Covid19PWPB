@@ -1,18 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<head>
-        <style type="text/css">
-          body{
-            margin-top: -25px;
-          }
-        </style>
-</head>
 <body>
   <header class="masthead">
-    <div class="container">
-      <div class="masthead-subheading">Selamat datang di web para senjakiawan</div>
-      <div class="masthead-heading text-uppercase">Menampilkan jumlah virus senja dan beberapa peralatan senja</div>
+    <div class="container" class="">
+      <div class="masthead-subheading">Green Healthy</div>
+      <div class="masthead-heading text-uppercase">Green Healthy</div>
     </div>
   </header>
   <section class="page-section" id="services">
@@ -42,52 +35,29 @@
       </div>
     </div>
         </section>
-        <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" href="{{ url('korona') }}"
-                                ><div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="covid/img/portfolio/04-thumbnail.jpg" alt=""
-                            /></a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Data Covid</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" href="{{ url('/berita') }}"
-                                ><div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="covid/img/portfolio/05-thumbnail.jpg" alt=""
-                            /></a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Berita</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" href="{{ url('toko') }}"
-                                ><div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="covid/img/portfolio/06-thumbnail.jpg" alt=""
-                            /></a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Toko</div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container">
+        <a style="display: block; font-size: 50px;" href="{{ url('/donasi/create') }}" class="btn btn-success">Donasi</a><br>
+
+      History Donasi :
+          @foreach ($donasi as $row)
+          <div class="col-md-12">
+            <div class="bg-info box text-white">
+              <div class="row">
+                <div class="col-md-6">
+                  <h6>{{ $row->nama }} | {{ $row->email }} | {{ $row->nohp }}</h6>
+                  <p>Pembayaran VIA : {{ $row->pembayaran }} | Rp. {{ number_format($row->nominal) }}</p>
+                  <i>{{ $row->tanggal }}</i>
                 </div>
+              </div>
             </div>
-        </section>
-        
+          </div>
+          @endforeach
+    </div>  
 </body>
 @endsection
+<style type="text/css">
+  .box{
+      padding: 30px 40px;
+      border-radius: 5px;
+    }
+</style>
